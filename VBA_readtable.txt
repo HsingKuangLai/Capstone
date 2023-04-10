@@ -1,8 +1,5 @@
 Option Explicit
 
-
-
-
 Sub readtable(filename as String)
 
 Dim wApp As New Word.Application

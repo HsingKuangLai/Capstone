@@ -157,7 +157,7 @@
     <FlowStep>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">330,99.2</av:Point>
+          <av:Point x:Key="ShapeLocation">79.99999999999999,219.20000000000002</av:Point>
           <av:Size x:Key="ShapeSize">200,81.6</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -240,28 +240,21 @@
       <Sequence DisplayName="Processing" sap:VirtualizedContainerService.HintSize="200,81.6" sap2010:WorkflowViewState.IdRef="Sequence_84">
         <Sequence.Variables>
           <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="page_gritable" />
-          <Variable x:TypeArguments="x:String" Name="filepath_inputfiles">
-            <Variable.Default>
-              <Literal x:TypeArguments="x:String">C:\Users\star8\desktop\Capstone\inputfiles\</Literal>
-            </Variable.Default>
-          </Variable>
+          <Variable x:TypeArguments="x:String" Default="C:\Users\star8\desktop\Capstone\inputfiles\" Name="filepath_inputfiles" />
           <Variable x:TypeArguments="x:String" Name="pass_arg" />
-          <Variable x:TypeArguments="x:String" Name="filepath_outputfiles">
-            <Variable.Default>
-              <Literal x:TypeArguments="x:String">C:\Users\star8\desktop\Capstone\outputfiles\</Literal>
-            </Variable.Default>
-          </Variable>
+          <Variable x:TypeArguments="x:String" Default="C:\Users\star8\desktop\Capstone\outputfiles\" Name="filepath_outputfiles" />
           <Variable x:TypeArguments="x:String" Name="filepath_http" />
+          <Variable x:TypeArguments="x:Int32" Name="httpOP" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="Download 1 Company" sap:VirtualizedContainerService.HintSize="593.6,81.6" sap2010:WorkflowViewState.IdRef="Sequence_83">
+        <Sequence DisplayName="Download 1 Company" sap:VirtualizedContainerService.HintSize="593.6,980" sap2010:WorkflowViewState.IdRef="Sequence_83">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -301,7 +294,7 @@
               <InArgument x:TypeArguments="x:String">["https://mops.twse.com.tw/server-java/FileDownLoad?step=9&amp;filePath=/home/html/nas/protect/t100/&amp;fileName=t100sa11_"+company_code+"_"+year_code+".pdf"]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[filepath_http]" sap:VirtualizedContainerService.HintSize="433.6,69.6" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="GET" ResourcePath="[filepath]" TimeoutMS="6000">
+          <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[filepath_http]" sap:VirtualizedContainerService.HintSize="433.6,69.6" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="GET" ResourcePath="[filepath]" StatusCode="[httpOP]" TimeoutMS="6000">
             <ui:HttpClient.Attachments>
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.Attachments>
