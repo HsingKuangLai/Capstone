@@ -1,0 +1,77 @@
+Option Explicit
+
+Sub AddReference()
+    Dim VBAEditor As VBIDE.VBE
+    Dim vbProj As VBIDE.VBProject
+    Dim chkRef As VBIDE.Reference
+    Dim BoolExists As Boolean
+
+    Set VBAEditor = Application.VBE
+    Set vbProj = ActiveWorkbook.VBProject
+    On Error Resume Next
+    vbProj.References.AddFromFile "C:\Program Files\Microsoft Office\root\Office16\MSWORD.OLB"
+
+End Sub
+
+
+
+Option Explicit
+
+Const filename As String = "C:\Users\star8\desktop\Capstone\inputfiles\2886_109_61.pdf"
+
+
+Sub readtable()
+
+Dim wApp As New Word.Application
+Dim wDoc As Word.document
+Dim pg As Word.paragraph
+Dim wline As String
+Dim tbCount, tbIndex As Integer
+Dim tRow As Long, tCol, lr As Long
+
+
+wApp.Visible = False
+Set wDoc = wApp.Documents.Open(filename, False)
+
+tbCount = wDoc.tables.Count
+
+'Cells(1, 1) = tbCount
+
+
+If wDoc.tables.Count > 0 Then
+
+For tbIndex = 1 To tbCount
+
+lr = Range("A" & Rows.Count).End(xlUp).Row
+
+   With wDoc.tables(tbIndex)
+      
+        For tRow = 1 To .Rows.Count
+           
+           lr = Range("A" & Rows.Count).End(xlUp).Row
+        
+           For tCol = 1 To .Columns.Count
+           
+              On Error Resume Next
+              
+              Cells(lr + 1, tCol).Value = .cell(tRow, tCol).Range.Text
+              
+              On Error GoTo 0
+              
+            Next tCol
+            
+         Next tRow
+         
+   End With
+
+Next tbIndex
+
+End If
+
+wDoc.Close False
+Set wDoc = Nothing
+
+wApp.Quit
+Set wApp = Nothing
+
+End Sub
