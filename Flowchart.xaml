@@ -140,7 +140,6 @@
       <Variable x:TypeArguments="x:Boolean" Name="gripattern" />
       <Variable x:TypeArguments="x:String" Name="company_code" />
       <Variable x:TypeArguments="x:String" Name="year_code" />
-      <Variable x:TypeArguments="x:String" Name="filepath" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -237,7 +236,7 @@
           <av:Size x:Key="ShapeSize">200,81.6</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Processing" sap:VirtualizedContainerService.HintSize="200,81.6" sap2010:WorkflowViewState.IdRef="Sequence_84">
+      <Sequence DisplayName="Processing" sap:VirtualizedContainerService.HintSize="656,3638.4" sap2010:WorkflowViewState.IdRef="Sequence_84">
         <Sequence.Variables>
           <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="page_gritable" />
           <Variable x:TypeArguments="x:String" Default="C:\Users\star8\desktop\Capstone\inputfiles\" Name="filepath_inputfiles" />
@@ -245,13 +244,14 @@
           <Variable x:TypeArguments="x:String" Default="C:\Users\star8\desktop\Capstone\outputfiles\" Name="filepath_outputfiles" />
           <Variable x:TypeArguments="x:String" Name="filepath_http" />
           <Variable x:TypeArguments="x:Int32" Name="httpOP" />
+          <Variable x:TypeArguments="x:String" Name="filepath" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="Download 1 Company" sap:VirtualizedContainerService.HintSize="593.6,980" sap2010:WorkflowViewState.IdRef="Sequence_83">
+        <Sequence DisplayName="Download 1 Company" sap:VirtualizedContainerService.HintSize="593.6,978.4" sap2010:WorkflowViewState.IdRef="Sequence_83">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -278,7 +278,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InputDialog>
-          <Assign sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_35">
+          <Assign sap:VirtualizedContainerService.HintSize="433.6,80" sap2010:WorkflowViewState.IdRef="Assign_35">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[filepath]</OutArgument>
             </Assign.To>
@@ -286,7 +286,7 @@
               <InArgument x:TypeArguments="x:String">["C:\Users\star8\desktop\Capstone\inputfiles\"+Company_code+"_"+year_code+".pdf"]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_34">
+          <Assign sap:VirtualizedContainerService.HintSize="433.6,80" sap2010:WorkflowViewState.IdRef="Assign_34">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[filepath_http]</OutArgument>
             </Assign.To>
