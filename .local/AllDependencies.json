@@ -23332,18 +23332,18 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\star8\\.nuget\\packages\\": {},
-    "C:\\Users\\star8\\AppData\\Local\\UiPath\\NugetFallbackFolder": {}
+    "C:\\Users\\TC\\.nuget\\packages\\": {},
+    "C:\\Users\\TC\\AppData\\Local\\UiPath\\NugetFallbackFolder": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Capstone",
       "projectName": "Capstone",
-      "projectPath": "C:\\Users\\star8\\desktop\\Capstone\\.local",
-      "packagesPath": "C:\\Users\\star8\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\star8\\desktop\\Capstone\\.local",
+      "projectPath": "C:\\Users\\TC\\Desktop\\Capstone\\.local",
+      "packagesPath": "C:\\Users\\TC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TC\\Desktop\\Capstone\\.local",
       "fallbackFolders": [
-        "C:\\Users\\star8\\AppData\\Local\\UiPath\\NugetFallbackFolder"
+        "C:\\Users\\TC\\AppData\\Local\\UiPath\\NugetFallbackFolder"
       ]
     },
     "frameworks": {
@@ -23390,7 +23390,7 @@
             "version": "[1.16.1-preview, 1.16.1-preview]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\star8\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\TC\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
