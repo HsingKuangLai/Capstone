@@ -1,0 +1,79 @@
+Option Explicit
+
+Sub readtable(filename as String)
+
+Dim wApp As New Word.Application
+Dim wDoc As Word.document
+Dim pg As Word.paragraph
+Dim wline As String
+Dim tbCount, tbIndex As Integer
+Dim tRow As Long, tCol, lr As Long
+Dim j As Integer
+Dim str As String
+Dim RegEx As Object, MyString As String
+    Set RegEx = CreateObject("VBScript.RegExp")
+    With RegEx
+      .Pattern = "\d{3}-\d{1,2}"
+    End With
+
+wApp.Visible = FALSE
+
+Set wDoc = wApp.Documents.Open(filename, False)
+
+tbCount = wDoc.tables.Count
+
+Cells(1, 1) = tbCount
+
+If wDoc.tables.Count > 0 Then
+
+For tbIndex = 1 To tbCount
+
+lr = Range("A" & Rows.Count).End(xlUp).Row
+
+  With wDoc.tables(tbIndex)
+              
+           For tCol = 1 To .Columns.Count
+              
+              IF regex.test(worksheetfunction.textjoin("", True, .columns(tCol)))=True Then
+           
+                 j = tCol
+
+                 Exit For 
+
+              End if
+
+            Next tCol
+         
+   End With
+
+   With wDoc.tables(tbIndex)
+              
+        For tRow = 1 To .Rows.Count
+           
+           lr = Range("A" & Rows.Count).End(xlUp).Row
+        
+           For tCol = 1 To .Columns.Count
+           
+              On Error Resume Next     
+              
+              Cells(lr + 1, tCol).Value = .Cell(tRow, tCol + j).Range.Text
+
+              On Error GoTo 0
+              
+            Next tCol
+            
+         Next tRow
+         
+   End With
+
+Next tbIndex
+
+End If
+
+wDoc.Close False
+Set wDoc = Nothing
+
+wApp.Quit
+Set wApp = Nothing
+
+End Sub
