@@ -146,7 +146,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">400,2.3999999999999986</av:Point>
         <av:Size x:Key="ShapeSize">60,75.2</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">400,40 370,40 370,140 270,140</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">400,40 170,40 170,99.2</av:PointCollection>
         <x:Double x:Key="Width">721.6</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
@@ -236,7 +236,7 @@
           <av:Size x:Key="ShapeSize">200,81.6</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Processing" sap:VirtualizedContainerService.HintSize="656,3670.4" sap2010:WorkflowViewState.IdRef="Sequence_84">
+      <Sequence DisplayName="Processing" sap:VirtualizedContainerService.HintSize="200,81.6" sap2010:WorkflowViewState.IdRef="Sequence_84">
         <Sequence.Variables>
           <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="page_gritable" />
           <Variable x:TypeArguments="x:String" Default="C:\Users\star8\desktop\Capstone\inputfiles\" Name="filepath_inputfiles" />

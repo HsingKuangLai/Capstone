@@ -1,11 +1,13 @@
 Option Explicit
 
-Sub readtable(filename As String)
+Sub readtable()
 
+Dim filename As String
+filename = "C:\Users\star8\desktop\Capstone\inputfiles\2609_110_gri.pdf"
 Dim wApp As New Word.Application
 Dim wDoc As Word.document
 Dim pg As Word.paragraph
-Dim FC As String
+Dim FC As Boolean
 Dim tbCount, tbIndex As Integer
 Dim tRow As Long, tCol, lr As Long
 Dim j As Integer
@@ -35,22 +37,32 @@ lr = Range("A" & Rows.Count).End(xlUp).Row
         For tRow = 1 To .Rows.Count
            
            lr = Range("A" & Rows.Count).End(xlUp).Row
-        
-           For tCol = 1 To .Columns.Count
+
+           
+        For tCol = 1 To .Columns.Count
            
               On Error Resume Next
               
-              FC = WorksheetFunction.IfError(WorksheetFunction.TextJoin("", False, .Columns(1)), "0")
+              j = 1
+             
+              Do Until RegEx.Test(.Cell(tRow, j).Range.Text) = True
+
+                j = j + 1
+                 
+                If j > .Columns.Count Then
+                      
+                   j = 1
+          
+                   Exit Do
+
+                End If
+
+              Loop
               
-              If FC = "0" Then
+              Cells(lr + 1, tCol).Value = .Cell(tRow, tCol + j - 1).Range.Text
               
-              Cells(lr + 1, tCol).Value = .Cell(tRow, tCol + 1).Range.Text
-              
-              Else
-              
-              Cells(lr + 1, tCol).Value = .Cell(tRow, tCol).Range.Text
-              
-              End If
+             j = 1
+
               On Error GoTo 0
               
             Next tCol
@@ -70,4 +82,3 @@ wApp.Quit
 Set wApp = Nothing
 
 End Sub
-
