@@ -1,9 +1,7 @@
 Option Explicit
 
-Sub readtable()
+Sub readtable(filename As String)
 
-Dim filename As String
-filename = "C:\Users\star8\desktop\Capstone\inputfiles\2609_110_gri.pdf"
 Dim wApp As New Word.Application
 Dim wDoc As Word.document
 Dim pg As Word.paragraph
@@ -53,7 +51,7 @@ lr = Range("A" & Rows.Count).End(xlUp).Row
                       
                    j = 1
           
-                   Exit Do
+                   Exit for 
 
                 End If
 
