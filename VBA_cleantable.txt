@@ -1,0 +1,37 @@
+Sub cleantable()
+
+Dim RegEx As Object, MyString As String
+    Set RegEx = CreateObject("VBScript.RegExp")
+    With RegEx
+      .Pattern = "\d{3}-\d{1,2}"
+    End With
+    
+Dim lr As Integer
+
+lr = Cells(rows.Count, 1).End(xlUp).Row
+
+For col = 2 To 20
+
+ If RegEx.test(WorksheetFunction.TextJoin("", False, Columns(col))) = True Then
+ 
+    Dim tbrange As Range
+    
+    Set tbrange = Range(Cells(1, col), Cells(100, col + 10))
+
+    tbrange.Copy
+
+    Range("A" & CStr(lr)).PasteSpecial xlPasteAll
+    
+    End If
+    
+    Next
+
+ Range("F1:Z" & CStr(lr)).Delete
+ 
+'On Error Resume Next
+ActiveSheet.Columns("A:A").SpecialCells(xlCellTypeBlanks).EntireRow.Delete
+'On Error GoTo 0
+
+End Sub
+
+

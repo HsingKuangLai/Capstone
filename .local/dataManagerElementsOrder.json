@@ -20,6 +20,14 @@
       "Path": "Flowchart.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "new_dt&Flowchart_1",
+        "colidx&Sequence_98",
+        "GRIif&Sequence_99",
+        "pageif&Sequence_99",
+        "pageidx&Sequence_92",
+        "pagediff&Flowchart_1",
+        "pagelist&Flowchart_1",
+        "pageMatch&Flowchart_1",
         "httpOP&Sequence_84",
         "filepath&Sequence_84",
         "filepath_http&Sequence_84",
@@ -34,7 +42,6 @@
         "j&Sequence_75",
         "gripattern&Flowchart_1",
         "dt&Flowchart_1",
-        "pagediff&Sequence_8",
         "str_op&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [],
