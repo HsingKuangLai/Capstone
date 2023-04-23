@@ -28,9 +28,11 @@ For col = 2 To 20
 
  Range("F1:Z" & CStr(lr)).Delete
  
-'On Error Resume Next
+On Error Resume Next
 ActiveSheet.Columns("A:A").SpecialCells(xlCellTypeBlanks).EntireRow.Delete
-'On Error GoTo 0
+On Error GoTo 0
+
+ActiveSheet.Columns(3).NumberFormat = "@"
 
 End Sub
 

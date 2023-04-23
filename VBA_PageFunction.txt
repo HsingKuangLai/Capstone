@@ -1,39 +1,62 @@
-Sub changePage()
+Sub ChangePage(pagedif As Integer)
 
-' 可以尋找符合頁碼的欄位，並依列修改頁碼
-Dim RegEx As Object, MyString As String
-    Set RegEx = CreateObject("VBScript.RegExp")
-    With RegEx
-      .Pattern = "\d{3}-\d{1,2}"
-    End With
+
+Dim lr, i As Integer
+
+Dim pattern As String
+
+pattern = "\d+"
+
+lr = Range("A" & Rows.Count).End(xlUp).Row
+
+For i = 1 To lr
+  
+On Error Resume Next
+
+ Cells(i, 3).Value = ExpandAndShift(Cells(i, 3).Value, pagedif)
+
+ Next i
+
 End Sub
 
 
-
-
-' 透過呼叫
-Function IncrementMatches(inputString As String, Pagedif as Integer) As String
+Function ExpandAndShift(str As String, shiftVal As Integer) As String
     Dim regex As Object
-    Set regex = CreateObject("VBScript.RegExp")
-    regex.Pattern = "\d+"
-    
     Dim matches As Object
-    Set matches = regex.Execute(inputString)
-    
     Dim match As Object
-    Dim result As String
-    Dim index As Long
-    Dim endIndex As Long
+    Dim startVal As Long
+    Dim endVal As Long
+    Dim tempStr As String
+    Dim outputStr As String
     
-    index = 1
+    Set regex = CreateObject("VBScript.RegExp")
+    regex.pattern = "(\d+)-(\d+)|(\d+)"
+    regex.Global = True
+    Set matches = regex.Execute(str)
+    
     For Each match In matches
-        endIndex = match.FirstIndex + Len(match.Value) - 1
-        result = result & Mid(inputString, index, match.FirstIndex - index + 1)
-        result = result & (match.Value + Pagedif)
-        index = endIndex + 2
+        If match.SubMatches(0) <> "" Then
+            startVal = CLng(match.SubMatches(0))
+            endVal = CLng(match.SubMatches(1))
+            
+            For i = startVal To endVal
+                tempStr = CStr(i + shiftVal)
+                If outputStr = "" Then
+                    outputStr = tempStr
+                Else
+                    outputStr = outputStr & "," & tempStr
+                End If
+            Next i
+        Else
+            tempStr = CStr(CLng(match.SubMatches(2)) + shiftVal)
+            If outputStr = "" Then
+                outputStr = tempStr
+            Else
+                outputStr = outputStr & "," & tempStr
+            End If
+        End If
     Next match
     
-    result = result & Mid(inputString, index)
-    
-    IncrementMatches = result
+    ExpandAndShift = outputStr
 End Function
+
