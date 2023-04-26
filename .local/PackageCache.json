@@ -317,6 +317,18 @@
         "C:\\Users\\star8\\.nuget\\packages\\uipath.webapi.runtime\\1.16.1-preview\\lib/net5.0-windows7.0/UiPath.Web.dll"
       ],
       "Path": "C:\\Users\\star8\\.nuget\\packages\\uipath.webapi.activities\\1.16.1-preview"
+    },
+    {
+      "Package": {
+        "Id": "UiPath.Python.Activities",
+        "Version": "1.6.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0\\lib/net5.0-windows7.0/UiPath.Python.Activities.Design.dll",
+        "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0\\lib/net5.0-windows7.0/UiPath.Python.Activities.dll",
+        "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0\\lib/net5.0-windows7.0/UiPath.Python.dll"
+      ],
+      "Path": "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0"
     }
   ],
   "Conflicts": [],
@@ -4924,6 +4936,11 @@
         }
       ]
     },
+    "UiPath.Python.Activities": {
+      "Id": "UiPath.Python.Activities",
+      "Version": "1.6.0",
+      "Dependencies": []
+    },
     "UiPath.System.Activities": {
       "Id": "UiPath.System.Activities",
       "Version": "23.4.1-preview",
@@ -7725,6 +7742,18 @@
         "C:\\Users\\star8\\.nuget\\packages\\uipath.platform\\23.4.0\\lib\\net6.0-windows7.0\\UiPath.Platform.dll"
       ],
       "Path": "C:\\Users\\star8\\.nuget\\packages\\uipath.platform\\23.4.0"
+    },
+    {
+      "Package": {
+        "Id": "UiPath.Python.Activities",
+        "Version": "1.6.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0\\lib\\net5.0-windows7.0\\UiPath.Python.Activities.Design.dll",
+        "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0\\lib\\net5.0-windows7.0\\UiPath.Python.Activities.dll",
+        "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0\\lib\\net5.0-windows7.0\\UiPath.Python.dll"
+      ],
+      "Path": "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0"
     },
     {
       "Package": {

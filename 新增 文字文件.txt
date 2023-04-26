@@ -1,0 +1,87 @@
+Option Explicit
+
+Sub readtable()
+
+Dim filename As String
+
+filename = ThisWorkbook.Path & "\1215_110_gri.pdf"
+ 
+Dim wApp As New Word.Application
+Dim wDoc As Word.Document
+Dim pg As Word.Paragraph
+Dim FC As Boolean
+Dim tbCount, tbIndex As Integer
+Dim tRow As Long, tCol, lr As Long
+Dim j, i As Integer
+Dim str As String
+Dim RegEx As Object, MyString As String
+    Set RegEx = CreateObject("VBScript.RegExp")
+    With RegEx
+      .pattern = "\d{3}-\d{1,2}"
+    End With
+
+wApp.Visible = False
+
+Set wDoc = wApp.Documents.Open(filename, False)
+
+tbCount = wDoc.Tables.Count
+
+'Cells(1, 1) = tbCount
+
+If wDoc.Tables.Count > 0 Then
+
+For tbIndex = 1 To tbCount
+
+    lr = Range("A" & Rows.Count).End(xlUp).Row
+
+    With wDoc.Tables(tbIndex)
+
+        For tRow = 1 To .Rows.Count
+
+            lr = Range("A" & Rows.Count).End(xlUp).Row
+
+            For tCol = 1 To .Columns.Count
+
+                i = 1
+                j = 1
+
+                ' Loop through the rows and columns to find a non-empty, non-merged cell
+                On Error GoTo 0
+                Do Until RegEx.Test(.cell(i, j).Range.Text) = True
+                 
+                    j = j + 1
+
+                    ' If we've reached the end of the row, start again at the beginning and move to the next row
+                    If j > .Columns.Count Then
+                        j = 1
+                        i = i + 1
+
+                        ' If we've reached the end of the table, exit the loop
+                        If i > .Rows.Count Then
+                            Exit For
+                        End If
+                    End If
+                Loop
+
+                If i <= .Rows.Count And j <= .Columns.Count Then
+                    Cells(lr + 1, tCol).Value = .cell(i, j).Range.Text
+                End If
+
+            Next tCol
+
+        Next tRow
+
+    End With
+
+Next tbIndex
+
+End If
+
+wDoc.Close False
+Set wDoc = Nothing
+
+wApp.Quit
+Set wApp = Nothing
+
+End Sub
+

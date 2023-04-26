@@ -18,7 +18,7 @@ On Error Resume Next
  Cells(i, 2).Value = ExpandAndShift(Cells(i, 2).Value, pagedif)
 
  Next i
-
+ActiveSheet.Columns(2).NumberFormat = "@"
 End Sub
 
 

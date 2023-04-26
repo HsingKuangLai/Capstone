@@ -31,19 +31,67 @@
         "new_dt&Flowchart_1",
         "pass_arg1&Flowchart_1",
         "gri_dict&Flowchart_1",
+        "filepath&Flowchart_1",
+        "filepath_http&Flowchart_1",
+        "httpOP&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ByVBA.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
         "page_gritable&Sequence_84",
         "filepath_inputfiles&Sequence_84",
         "pass_arg&Sequence_84",
         "filepath_outputfiles&Sequence_84",
-        "filepath_http&Sequence_84",
-        "httpOP&Sequence_84",
-        "filepath&Sequence_84",
         "pageCount&Sequence_75",
         "i&Sequence_75",
         "j&Sequence_75",
-        "pageidx&Sequence_104"
+        "pageidx&Sequence_104",
+        "pages&Sequence_104"
       ],
-      "ArgumentsSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "pagediff",
+        "pagelist",
+        "filepath",
+        "str_op",
+        "company_code",
+        "year_code",
+        "dt",
+        "gri_dict"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ExtractOriginPageIndex.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Bow&Sequence_123",
+        "pageanchor&Sequence_123",
+        "pagematch&Sequence_123",
+        "gripattern&Sequence_123",
+        "page_list&Sequence_123",
+        "gri_dict&Sequence_123",
+        "gripatternnext&Sequence_123",
+        "wp&Sequence_123",
+        "pagecnt&Sequence_123",
+        "page_listL&Sequence_124",
+        "gripatternmid&Sequence_125"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "pagediff",
+        "year_code",
+        "company_code",
+        "filepath",
+        "str_op",
+        "dt",
+        "gri_dict",
+        "gripattern"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
