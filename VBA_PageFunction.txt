@@ -5,15 +5,17 @@ Dim lr, i As Integer
 
 Dim pattern As String
 
-pattern = "\d+"
-
 lr = Range("A" & Rows.Count).End(xlUp).Row
 
 For i = 1 To lr
   
 On Error Resume Next
 
- Cells(i, 3).Value = ExpandAndShift(Cells(i, 3).Value, pagedif)
+ pattern = "\d{3}-\d{1,2}"
+
+ cells(i, 1).value = ExtractGRIPattern(Cells(i, 1).Value, pattern)
+
+ Cells(i, 2).Value = ExpandAndShift(Cells(i, 2).Value, pagedif)
 
  Next i
 
@@ -58,5 +60,27 @@ Function ExpandAndShift(str As String, shiftVal As Integer) As String
     Next match
     
     ExpandAndShift = outputStr
+End Function
+
+Function ExtractGRIPattern(ByVal inputStr As String, ByVal pattern As String) As String
+    Dim regEx As Object
+    Dim match As Object
+    Dim matches As Object
+    Dim outputStr As String
+    
+    Set regEx = CreateObject("VBScript.RegExp")
+    regEx.pattern = pattern
+    regEx.Global = True
+    Set matches = regEx.Execute(inputStr)
+    
+    For Each match In matches
+        If outputStr = "" Then
+            outputStr = match.Value
+        Else
+            outputStr = outputStr & "," & match.Value
+        End If
+    Next match
+    
+    ExtractGRIPattern = outputStr
 End Function
 

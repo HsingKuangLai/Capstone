@@ -1,6 +1,6 @@
 Sub cleantable()
 
-Dim RegEx As Object, MyString As String
+Dim RegEx As Object
     Set RegEx = CreateObject("VBScript.RegExp")
     With RegEx
       .Pattern = "\d{3}-\d{1,2}"
@@ -32,7 +32,31 @@ On Error Resume Next
 ActiveSheet.Columns("A:A").SpecialCells(xlCellTypeBlanks).EntireRow.Delete
 On Error GoTo 0
 
-ActiveSheet.Columns(3).NumberFormat = "@"
+Dim ws As Worksheet
+    Dim lc As Long
+    Dim cell As Range
+    Dim Regex1 as Object
+    Set RegEx = CreateObject("VBScript.RegExp")
+    With RegEx
+      .pattern = "\d{3}-\d{1,2}"
+    End With
+
+    Set RegEx1 = CreateObject("VBScript.RegExp")
+    With RegEx1
+      .pattern = "[^\u4E00-\u9FFF]"
+    End With
+
+    Set ws = ActiveSheet
+    lc = ws.Cells(2, Columns.Count).End(xlToLeft).Column
+       
+    For Each cell In ws.Range(ws.Cells(2, 1), ws.Cells(2, lc))
+        If Not RegEx.Test(cell.Value) and Not Regex.test(cell.value) Then
+            cell.EntireColumn.Delete Shift:=xlToLeft
+            lc = lc - 1
+        End If
+    Next cell
+
+ActiveSheet.Columns(2).NumberFormat = "@"
 
 End Sub
 

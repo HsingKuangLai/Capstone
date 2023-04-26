@@ -1,7 +1,11 @@
 Option Explicit
 
-Sub readtable(filename As String)
+Sub readtable(companycode As String, yearcode As String)
 
+Dim filename as String
+
+filename = Thisworkbook.path & "\" & companycode & "_" & yearcode & "_gri.pdf"
+ 
 Dim wApp As New Word.Application
 Dim wDoc As Word.document
 Dim pg As Word.paragraph
@@ -22,7 +26,7 @@ Set wDoc = wApp.Documents.Open(filename, False)
 
 tbCount = wDoc.tables.Count
 
-Cells(1, 1) = tbCount
+'Cells(1, 1) = tbCount
 
 If wDoc.tables.Count > 0 Then
 

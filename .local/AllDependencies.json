@@ -23332,19 +23332,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\star8\\.nuget\\packages\\": {},
-    "C:\\Users\\star8\\AppData\\Local\\UiPath\\NugetFallbackFolder": {}
+    "C:\\Users\\star8\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Capstone",
       "projectName": "Capstone",
-      "projectPath": "C:\\Users\\star8\\desktop\\Capstone\\.local",
+      "projectPath": "C:\\Users\\star8\\Desktop\\Capstone\\.local",
       "packagesPath": "C:\\Users\\star8\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\star8\\desktop\\Capstone\\.local",
-      "fallbackFolders": [
-        "C:\\Users\\star8\\AppData\\Local\\UiPath\\NugetFallbackFolder"
-      ]
+      "outputPath": "C:\\Users\\star8\\Desktop\\Capstone\\.local"
     },
     "frameworks": {
       "net6.0-windows7.0": {
