@@ -3,12 +3,12 @@ Sub cleantable()
 Dim RegEx As Object
     Set RegEx = CreateObject("VBScript.RegExp")
     With RegEx
-      .Pattern = "\d{3}-\d{1,2}"
+      .pattern = "\d{3}-\d{1,2}"
     End With
     
-Dim lr As Integer
+Dim lr, col As Integer
 
-lr = Cells(rows.Count, 1).End(xlUp).Row
+lr = Cells(Rows.Count, 1).End(xlUp).Row
 
 For col = 2 To 20
 
@@ -33,31 +33,29 @@ ActiveSheet.Columns("A:A").SpecialCells(xlCellTypeBlanks).EntireRow.Delete
 On Error GoTo 0
 
 Dim ws As Worksheet
-    Dim lc As Long
+    Dim lc, i As Integer
     Dim cell As Range
-    Dim Regex1 as Object
+    Dim Regex1 As Object
     Set RegEx = CreateObject("VBScript.RegExp")
     With RegEx
       .pattern = "\d{3}-\d{1,2}"
     End With
 
-    Set RegEx1 = CreateObject("VBScript.RegExp")
-    With RegEx1
-      .pattern = "[^\u4E00-\u9FFF]"
+    Set Regex1 = CreateObject("VBScript.RegExp")
+    With Regex1
+      .pattern = "[\u4E00-\u9FFF]"
     End With
 
     Set ws = ActiveSheet
-    lc = ws.Cells(2, Columns.Count).End(xlToLeft).Column
+    lc = ws.Cells.Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column - 1
        
-    For Each cell In ws.Range(ws.Cells(2, 1), ws.Cells(2, lc))
-        If Not RegEx.Test(cell.Value) and Not Regex.test(cell.value) Then
-            cell.EntireColumn.Delete Shift:=xlToLeft
+    For i = lc To 2 Step -1
+        If Not RegEx.test(WorksheetFunction.TextJoin("", False, ws.Columns(i))) And Regex1.test(WorksheetFunction.TextJoin("", False, ws.Columns(i))) Then
+            ws.Columns(i).EntireColumn.Delete Shift:=xlToLeft
             lc = lc - 1
         End If
-    Next cell
+    Next i
 
 ActiveSheet.Columns(2).NumberFormat = "@"
 
 End Sub
-
-

@@ -5218,7 +5218,7 @@
           }
         }
       },
-      "UiPath.Platform/23.4.0": {
+      "UiPath.Platform/23.4.1": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
@@ -5379,7 +5379,7 @@
           }
         }
       },
-      "UiPath.System.Activities/23.4.1-preview": {
+      "UiPath.System.Activities/23.4.2": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -5394,8 +5394,8 @@
           "SharpZipLib": "1.3.3",
           "System.Activities.ViewModels": "1.0.0-20230306.1",
           "System.Management.Automation": "7.1.0",
-          "UiPath.Platform": "23.4.0-beta.3692006",
-          "UiPath.System.Runtime.Windows": "23.4.1-preview",
+          "UiPath.Platform": "23.4.1",
+          "UiPath.System.Runtime.Windows": "23.4.2",
           "UiPath.Telemetry.Client": "1.5.3"
         },
         "compile": {
@@ -5447,7 +5447,7 @@
           }
         }
       },
-      "UiPath.System.Runtime.Windows/23.4.1-preview": {
+      "UiPath.System.Runtime.Windows/23.4.2": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -5462,7 +5462,7 @@
           "Microsoft.VisualBasic": "10.3.0",
           "SharpZipLib": "1.3.3",
           "System.Management.Automation": "7.1.0",
-          "UiPath.Platform": "23.4.0-beta.3692006",
+          "UiPath.Platform": "23.4.1",
           "UiPath.Telemetry.Client": "1.5.3"
         },
         "compile": {
@@ -11267,7 +11267,7 @@
           }
         }
       },
-      "UiPath.Platform/23.4.0": {
+      "UiPath.Platform/23.4.1": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
@@ -11428,7 +11428,7 @@
           }
         }
       },
-      "UiPath.System.Activities/23.4.1-preview": {
+      "UiPath.System.Activities/23.4.2": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -11443,8 +11443,8 @@
           "SharpZipLib": "1.3.3",
           "System.Activities.ViewModels": "1.0.0-20230306.1",
           "System.Management.Automation": "7.1.0",
-          "UiPath.Platform": "23.4.0-beta.3692006",
-          "UiPath.System.Runtime.Windows": "23.4.1-preview",
+          "UiPath.Platform": "23.4.1",
+          "UiPath.System.Runtime.Windows": "23.4.2",
           "UiPath.Telemetry.Client": "1.5.3"
         },
         "compile": {
@@ -11496,7 +11496,7 @@
           }
         }
       },
-      "UiPath.System.Runtime.Windows/23.4.1-preview": {
+      "UiPath.System.Runtime.Windows/23.4.2": {
         "type": "package",
         "dependencies": {
           "CsvHelper": "16.0.0",
@@ -11511,7 +11511,7 @@
           "Microsoft.VisualBasic": "10.3.0",
           "SharpZipLib": "1.3.3",
           "System.Management.Automation": "7.1.0",
-          "UiPath.Platform": "23.4.0-beta.3692006",
+          "UiPath.Platform": "23.4.1",
           "UiPath.Telemetry.Client": "1.5.3"
         },
         "compile": {
@@ -22477,10 +22477,10 @@
         "uipath.pdf.activities.nuspec"
       ]
     },
-    "UiPath.Platform/23.4.0": {
-      "sha512": "92UUK+kxNHx1kO4sUP0znT2ndxyC5ESjSsAWVKMUVdYHCVpmnlW5lHMKOFxXQB75d/rlQ6c6GxKhdioPztyJKg==",
+    "UiPath.Platform/23.4.1": {
+      "sha512": "6l8TSa1EAZikIBYobLBjx/GluRK77N4XijoQr/7NP5+GTqWxw0PH7BY5Yej6SU5uoJa0CVW794tyxnTPS84/QA==",
       "type": "package",
-      "path": "uipath.platform/23.4.0",
+      "path": "uipath.platform/23.4.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -22544,7 +22544,7 @@
         "lib/net6.0/ru/UiPath.Platform.resources.dll",
         "lib/net6.0/tr/UiPath.Platform.resources.dll",
         "lib/net6.0/zh-CN/UiPath.Platform.resources.dll",
-        "uipath.platform.23.4.0.nupkg.sha512",
+        "uipath.platform.23.4.1.nupkg.sha512",
         "uipath.platform.nuspec"
       ]
     },
@@ -22784,10 +22784,10 @@
         "uipath.python.activities.nuspec"
       ]
     },
-    "UiPath.System.Activities/23.4.1-preview": {
-      "sha512": "Vdc2NP1C3zMuosZr59fgo1tVfb8TyYdJwMSNxrP/myT4l3DG0wj+GAZIN/LFmfoKiqDl7KVfq9TWSCrAuOXxsQ==",
+    "UiPath.System.Activities/23.4.2": {
+      "sha512": "turNAz6v/65LMOrNGjleDErDGee3YIg0I3LpAbOGEDM2wnohlomXzOamcBHq/Nk+uuDVObQgtyIX5wnduuZ1HQ==",
       "type": "package",
-      "path": "uipath.system.activities/23.4.1-preview",
+      "path": "uipath.system.activities/23.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -22822,14 +22822,14 @@
         "lib/net6.0-windows7.0/zh-TW/UiPath.System.Activities.Design.resources.dll",
         "lib/net6.0-windows7.0/zu/UiPath.System.Activities.Design.resources.dll",
         "lib/net6.0/UiPath.System.Activities.ViewModels.dll",
-        "uipath.system.activities.23.4.1-preview.nupkg.sha512",
+        "uipath.system.activities.23.4.2.nupkg.sha512",
         "uipath.system.activities.nuspec"
       ]
     },
-    "UiPath.System.Runtime.Windows/23.4.1-preview": {
-      "sha512": "0nVnGHe9LDk9I6TXSs0odBg75rRjfYzjXbQ9ndhvsOkYEyV2Yd4BW/FjBnerIAxTlTyBuBwlpq8IYrOArY1geA==",
+    "UiPath.System.Runtime.Windows/23.4.2": {
+      "sha512": "LO1cTngKa81QFb5t8Bgp+7bqZ1/yDKvRKcW3o+NuOp7LrPn+B3aTtZVjF3IMcFeSKWl68aK6tkqXgLmcIfJckg==",
       "type": "package",
-      "path": "uipath.system.runtime.windows/23.4.1-preview",
+      "path": "uipath.system.runtime.windows/23.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -22863,7 +22863,7 @@
         "lib/net6.0-windows7.0/zh-CN/UiPath.System.Activities.resources.dll",
         "lib/net6.0-windows7.0/zh-TW/UiPath.System.Activities.resources.dll",
         "lib/net6.0-windows7.0/zu/UiPath.System.Activities.resources.dll",
-        "uipath.system.runtime.windows.23.4.1-preview.nupkg.sha512",
+        "uipath.system.runtime.windows.23.4.2.nupkg.sha512",
         "uipath.system.runtime.windows.nuspec"
       ]
     },
@@ -23786,7 +23786,7 @@
       "UiPath.Mail.Activities >= 1.18.2 <= 1.18.2",
       "UiPath.PDF.Activities >= 3.14.0 <= 3.14.0",
       "UiPath.Python.Activities >= 1.6.0 <= 1.6.0",
-      "UiPath.System.Activities >= 23.4.1-preview <= 23.4.1-preview",
+      "UiPath.System.Activities >= 23.4.2 <= 23.4.2",
       "UiPath.Testing.Activities >= 23.2.0-preview <= 23.2.0-preview",
       "UiPath.UIAutomation.Activities >= 23.2.0-preview <= 23.2.0-preview",
       "UiPath.WebAPI.Activities >= 1.16.1-preview <= 1.16.1-preview"
@@ -23834,7 +23834,7 @@
           "UiPath.System.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[23.4.1-preview, 23.4.1-preview]"
+            "version": "[23.4.2, 23.4.2]"
           },
           "UiPath.Testing.Activities": {
             "include": "Runtime",

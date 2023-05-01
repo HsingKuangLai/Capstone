@@ -1,40 +1,40 @@
 Option Explicit
 
-Sub readtable(companycode As String, yearcode As String)
+Sub readtable(companycode as String, yearcode as String)
 
-Dim filename as String
+Dim filename As String
 
-filename = Thisworkbook.path & "\" & companycode & "_" & yearcode & "_gri.pdf"
+filename = ThisWorkbook.Path & "\" & companycode & "_" & yearcode & "_gri.pdf"
  
 Dim wApp As New Word.Application
-Dim wDoc As Word.document
-Dim pg As Word.paragraph
+Dim wDoc As Word.Document
+Dim pg As Word.Paragraph
 Dim FC As Boolean
 Dim tbCount, tbIndex As Integer
 Dim tRow As Long, tCol, lr As Long
-Dim j,i As Integer
+Dim j, i As Integer
 Dim str As String
 Dim RegEx As Object, MyString As String
     Set RegEx = CreateObject("VBScript.RegExp")
     With RegEx
-      .Pattern = "\d{3}-\d{1,2}"
+      .pattern = "\d{3}-\d{1,2}"
     End With
 
 wApp.Visible = False
 
 Set wDoc = wApp.Documents.Open(filename, False)
 
-tbCount = wDoc.tables.Count
+tbCount = wDoc.Tables.Count
 
 'Cells(1, 1) = tbCount
 
-If wDoc.tables.Count > 0 Then
+If wDoc.Tables.Count > 0 Then
 
 For tbIndex = 1 To tbCount
 
 lr = Range("A" & Rows.Count).End(xlUp).Row
 
-   With wDoc.tables(tbIndex)
+   With wDoc.Tables(tbIndex)
    
         For tRow = 1 To .Rows.Count
            
@@ -46,7 +46,7 @@ lr = Range("A" & Rows.Count).End(xlUp).Row
               
               j = 1
               
-              Do Until RegEx.Test(.Cell(i, j).Range.Text) = True
+              Do Until RegEx.Test(.cell(tRow, j).Range.Text) = True
 
                 j = j + 1
                 
@@ -55,13 +55,17 @@ lr = Range("A" & Rows.Count).End(xlUp).Row
                       
                    j = 1
           
-                   Exit for 
+                   Exit For
 
                 End If
 
               Loop
               
-              Cells(lr + 1, tCol).Value = .Cell(tRow, tCol + j - 1).Range.Text
+              If RegEx.Test(.cell(tRow, j).Range.Text) = True Then
+              
+              Cells(lr + 1, tCol).Value = .cell(tRow, tCol + j-1).Range.Text
+              
+              End If
               
              j = 1
 
@@ -84,3 +88,6 @@ wApp.Quit
 Set wApp = Nothing
 
 End Sub
+
+
+

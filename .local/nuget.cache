@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ki3kLqQ/6PQ25m7+ZN0qsCF3I1zUp+vc6x/cY1zQD4fx2afXWudxWb1BTw21VAbwxGmOt16vyGOA3NYW6ZDxXQ==",
+  "dgSpecHash": "3uh/FAlqfSFXhRr12FUUGKBRtgq3vv+DFZCOdAhLy9YqSusLtgdEHxPU4tyb8SRwxLaNYHvvpMWSnua8Fd8AYw==",
   "success": true,
   "projectFilePath": "C:\\Users\\star8\\Desktop\\Capstone\\.local\\",
   "expectedPackageFiles": [
@@ -293,10 +293,10 @@
     "C:\\Users\\star8\\.nuget\\packages\\uipath.ocr.activities\\3.13.0-preview\\uipath.ocr.activities.3.13.0-preview.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.ocr.contracts\\2.14.0\\uipath.ocr.contracts.2.14.0.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.pdf.activities\\3.14.0\\uipath.pdf.activities.3.14.0.nupkg.sha512",
-    "C:\\Users\\star8\\.nuget\\packages\\uipath.platform\\23.4.0\\uipath.platform.23.4.0.nupkg.sha512",
+    "C:\\Users\\star8\\.nuget\\packages\\uipath.platform\\23.4.1\\uipath.platform.23.4.1.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.6.0\\uipath.python.activities.1.6.0.nupkg.sha512",
-    "C:\\Users\\star8\\.nuget\\packages\\uipath.system.activities\\23.4.1-preview\\uipath.system.activities.23.4.1-preview.nupkg.sha512",
-    "C:\\Users\\star8\\.nuget\\packages\\uipath.system.runtime.windows\\23.4.1-preview\\uipath.system.runtime.windows.23.4.1-preview.nupkg.sha512",
+    "C:\\Users\\star8\\.nuget\\packages\\uipath.system.activities\\23.4.2\\uipath.system.activities.23.4.2.nupkg.sha512",
+    "C:\\Users\\star8\\.nuget\\packages\\uipath.system.runtime.windows\\23.4.2\\uipath.system.runtime.windows.23.4.2.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.telemetry.client\\1.5.3\\uipath.telemetry.client.1.5.3.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.testing.activities\\23.2.0-preview\\uipath.testing.activities.23.2.0-preview.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.uiautomation.activities\\23.2.0-preview\\uipath.uiautomation.activities.23.2.0-preview.nupkg.sha512",

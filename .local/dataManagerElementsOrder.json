@@ -43,6 +43,7 @@
       "Path": "ByVBA.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "dt_all&Sequence_84",
         "page_gritable&Sequence_84",
         "filepath_inputfiles&Sequence_84",
         "pass_arg&Sequence_84",

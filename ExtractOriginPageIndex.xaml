@@ -9,7 +9,7 @@
     <x:Property Name="year_code" Type="InArgument(x:String)" />
     <x:Property Name="pagediff" Type="InArgument(x:Int32)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>844,416.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>912.8,7176.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -227,7 +227,7 @@
                         <InArgument x:TypeArguments="x:Int32">0</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="important parameter maxiiteration&#xA;&#xA;" Condition="[gripatternnext=False]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="531.2,1323.2" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_8" MaxIterations="6">
+                    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="important parameter maxiiteration&#xA;&#xA;" Condition="[gripatternnext=False]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="531.2,1323.2" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_8" MaxIterations="8">
                       <ui:InterruptibleDoWhile.Body>
                         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,1157.6" sap2010:WorkflowViewState.IdRef="Sequence_125">
                           <Sequence.Variables>
