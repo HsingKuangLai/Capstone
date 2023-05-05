@@ -20,6 +20,10 @@
       "Path": "Flowchart.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "dt_sum&Sequence_144",
+        "invokepy&Sequence_140",
+        "load&Sequence_140",
+        "dt_run&Sequence_119",
         "str_op&Flowchart_1",
         "dt&Flowchart_1",
         "gripattern&Flowchart_1",

@@ -5,11 +5,11 @@ import numpy as np
 import openpyxl
 import os
 from openpyxl import load_workbook
-from pdfrw import PdfReader, PdfWriter
+from pdfrw import PdfWriter,PdfReader
 
 
-excel_name="C:\Users\star8\Desktop\OP-copy\OP\2881\2881_110_etr.xlsm"
-filename="C:\Users\star8\Desktop\OP-copy\IP\2881_110.pdf"
+excel_name="C://Users//star8//Desktop//OP-copy//OP//2881//2881_110_etr.xlsx"
+filename="C://Users//star8//Desktop//OP-copy//IP//2881_110.pdf"
 
 df = pd.read_excel(excel_name, engine='openpyxl')
 df
@@ -20,7 +20,7 @@ for i in range(df.shape[0]):
     pages = list(map(int, df.loc[i, 'pages'].split(',')))
     
     # Generate the corresponding PDF file
-    output_file = os.path.join("C:/Users/pojid/01/output", str(i+1) + '.pdf')
+    output_file = os.path.join("outputfiles/", str(i+1) + '.pdf')
     writer = PdfWriter()
     for page in pages:
         writer.addpage(PdfReader(filename).pages[page-1])

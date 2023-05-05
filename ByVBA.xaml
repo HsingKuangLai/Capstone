@@ -9,7 +9,7 @@
     <x:Property Name="gri_dict" Type="InArgument(scg:Dictionary(x:String, scg:List(x:String)))" />
     <x:Property Name="pagelist" Type="InArgument(scg:List(x:String))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>912.8,5471.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>912.8,6930.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -136,13 +136,13 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="923.2,5406.4" sap2010:WorkflowViewState.IdRef="Sequence_122">
+  <Sequence sap:VirtualizedContainerService.HintSize="923.2,6865.6" sap2010:WorkflowViewState.IdRef="Sequence_122">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="ByVBA" sap:VirtualizedContainerService.HintSize="860.8,5294.4" sap2010:WorkflowViewState.IdRef="Sequence_84">
+    <Sequence DisplayName="ByVBA" sap:VirtualizedContainerService.HintSize="860.8,6753.6" sap2010:WorkflowViewState.IdRef="Sequence_84">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="page_gritable" />
         <Variable x:TypeArguments="x:String" Default="inputfiles\" Name="filepath_inputfiles" />
@@ -155,7 +155,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Read PDF to Deposit GRI Page" sap:VirtualizedContainerService.HintSize="798.4,81.6" sap2010:WorkflowViewState.IdRef="Sequence_75">
+      <Sequence DisplayName="Read PDF to Deposit GRI Page" sap:VirtualizedContainerService.HintSize="798.4,1390.4" sap2010:WorkflowViewState.IdRef="Sequence_75">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Int32" Name="pageCount" />
           <Variable x:TypeArguments="x:Int32" Default="1" Name="i" />
@@ -163,7 +163,7 @@
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -185,7 +185,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:ReadPDFText FileName="[filepath]" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_4" PreserveFormatting="False" Range="[i.ToString]" Text="[str_op]" />
-              <If Condition="[str_op.Contains(&quot;GRI&quot;)  and str_op.Contains(&quot;頁&quot;)]" sap:VirtualizedContainerService.HintSize="433.6,412" sap2010:WorkflowViewState.IdRef="If_4">
+              <If Condition="[(str_op.Contains(&quot;GRI&quot;)  and str_op.Contains(&quot;頁&quot;)) or (str_op.Contains(&quot;GRI&quot;)  and str_op.Contains(&quot;主題&quot;)) or (str_op.Contains(&quot;GRI&quot;)  and str_op.Contains(&quot;索引&quot;))]" sap:VirtualizedContainerService.HintSize="433.6,412" sap2010:WorkflowViewState.IdRef="If_4">
                 <If.Then>
                   <Sequence sap:VirtualizedContainerService.HintSize="377.6,229.6" sap2010:WorkflowViewState.IdRef="Sequence_80">
                     <sap:WorkflowViewStateService.ViewState>
@@ -225,7 +225,7 @@
         </ui:InterruptibleDoWhile>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="531.2,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[string.join(&quot;,&quot;,page_gritable)]" />
       </Sequence>
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="798.4,266.4" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="798.4,315.2" sap2010:WorkflowViewState.IdRef="TryCatch_5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -242,10 +242,10 @@
           </upap:ExtractPDFPageRange>
         </TryCatch.Try>
         <TryCatch.Catches>
-          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,104.8" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21.6" sap2010:WorkflowViewState.IdRef="Catch`1_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -266,25 +266,25 @@
           <InArgument x:TypeArguments="x:String">[filepath_inputfiles+company_code+"_"+year_code+"_gri.pdf"]</InArgument>
         </Assign.Value>
       </Assign>
-      <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="798.4,4440" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_3">
+      <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="798.4,4541.6" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_3">
         <ueab:ExcelProcessScopeX.Body>
           <ActivityAction x:TypeArguments="ui:IExcelProcess">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="764.8,4353.6" sap2010:WorkflowViewState.IdRef="Sequence_85">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="764.8,4455.2" sap2010:WorkflowViewState.IdRef="Sequence_85">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="702.4,4241.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" WorkbookPath="[filepath_outputfiles+company_code+&quot;_&quot;+year_code+&quot;_etr.xlsm&quot;]">
+              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="702.4,4343.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" WorkbookPath="[filepath_outputfiles+company_code+&quot;_&quot;+year_code+&quot;_etr.xlsm&quot;]">
                 <ueab:ExcelApplicationCard.Body>
                   <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="668.8,3972.8" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="668.8,4074.4" sap2010:WorkflowViewState.IdRef="Sequence_86">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -454,13 +454,13 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ueab:ReadRangeX>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="606.4,1835.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="606.4,1664.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572.8,1720" sap2010:WorkflowViewState.IdRef="Sequence_110">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572.8,1549.6" sap2010:WorkflowViewState.IdRef="Sequence_110">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -548,7 +548,7 @@
                                   </Sequence>
                                 </If.Else>
                               </If>
-                              <If Condition="[gri_dict.ContainsKey(CurrentRow.item(0).ToString)]" sap:VirtualizedContainerService.HintSize="510.4,577.6" sap2010:WorkflowViewState.IdRef="If_7">
+                              <If Condition="[gri_dict.ContainsKey(CurrentRow.item(0).ToString)]" sap:VirtualizedContainerService.HintSize="510.4,407.2" sap2010:WorkflowViewState.IdRef="If_7">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -607,19 +607,33 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:ForEachRow>
                       <ui:BuildDataTable DataTable="[dt_all]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="606.4,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;GRI_Standard&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Transferred_page&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                      <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:List(x:String))" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="606.4,461.6" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[gri_dict]">
+                      <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:List(x:String))" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="606.4,733.6" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[gri_dict]">
                         <ui:ForEach.Body>
                           <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, scg:List(x:String))">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:List(x:String))" Name="item" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="377.6,275.2" sap2010:WorkflowViewState.IdRef="Sequence_118">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="454.4,547.2" sap2010:WorkflowViewState.IdRef="Sequence_118">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{item.Key, string.join(&quot;,&quot;,item.Value)}]" DataTable="[dt_all]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334.4,185.6" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                              <If Condition="[len(item.value.ToString.Trim)&gt;0]" sap:VirtualizedContainerService.HintSize="411.2,457.6" sap2010:WorkflowViewState.IdRef="If_9">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="377.6,275.2" sap2010:WorkflowViewState.IdRef="Sequence_123">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{item.Key, string.join(&quot;,&quot;,item.Value)}]" DataTable="[dt_all]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334.4,185.6" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_124" />
+                                </If.Else>
+                              </If>
                             </Sequence>
                           </ActivityAction>
                         </ui:ForEach.Body>

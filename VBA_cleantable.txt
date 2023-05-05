@@ -47,7 +47,7 @@ Dim ws As Worksheet
     End With
 
     Set ws = ActiveSheet
-    lc = ws.Cells.Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column - 1
+    lc = ws.Cells.Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
        
     For i = lc To 2 Step -1
         If Not RegEx.test(WorksheetFunction.TextJoin("", False, ws.Columns(i))) And Regex1.test(WorksheetFunction.TextJoin("", False, ws.Columns(i))) Then
