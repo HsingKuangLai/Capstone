@@ -20,6 +20,11 @@
       "Path": "Flowchart.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "pages&Flowchart_1",
+        "load&Sequence_167",
+        "invokepy&Sequence_167",
+        "dt_all&Flowchart_1",
+        "pageidx&Sequence_148",
         "dt_sum&Sequence_144",
         "invokepy&Sequence_140",
         "load&Sequence_140",
@@ -47,6 +52,8 @@
       "Path": "ByVBA.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "load&Sequence_126",
+        "invokepy&Sequence_126",
         "dt_all&Sequence_84",
         "page_gritable&Sequence_84",
         "filepath_inputfiles&Sequence_84",
