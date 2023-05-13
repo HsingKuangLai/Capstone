@@ -1,0 +1,21 @@
+Sub AddLinks()
+    Dim filePath As String
+    Dim rng As Range
+    Set rng = Range("C2:C" & Cells(Rows.Count, "C").End(xlUp).Row)
+    
+    For Each cell In rng
+        '取得儲存格中的檔案名稱
+        filePath = cell.Value
+        
+        '如果該儲存格不是空的，就將它轉換為相對路徑的超連結
+        If filePath <> "" Then
+            '組合相對路徑
+            Dim relativePath As String
+            relativePath = ThisWorkbook.Path & "\" & filePath
+            
+            '將相對路徑設定為超連結地址
+            cell.Hyperlinks.Add Anchor:=cell, Address:=relativePath
+        End If
+    Next cell
+        'Range("C1:C" & Cells(Rows.Count, "C").End(xlUp).Row).ClearContents
+End Sub

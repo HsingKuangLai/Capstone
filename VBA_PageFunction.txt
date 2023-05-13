@@ -83,4 +83,3 @@ Function ExtractGRIPattern(ByVal inputStr As String, ByVal pattern As String) As
     
     ExtractGRIPattern = outputStr
 End Function
-
