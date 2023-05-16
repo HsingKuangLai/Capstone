@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3uh/FAlqfSFXhRr12FUUGKBRtgq3vv+DFZCOdAhLy9YqSusLtgdEHxPU4tyb8SRwxLaNYHvvpMWSnua8Fd8AYw==",
+  "dgSpecHash": "hSShlM37+yVMcW2J3Qya5Gh8sh3g2hyI1B6UbS9fLdDqARwQeTb1u51hrIALqpO68//qvNtYx6W9edDyzW6HmA==",
   "success": true,
   "projectFilePath": "C:\\Users\\star8\\Desktop\\Capstone\\.local\\",
   "expectedPackageFiles": [
@@ -287,7 +287,7 @@
     "C:\\Users\\star8\\.nuget\\packages\\uipath.documentprocessing.contracts\\1.21.0\\uipath.documentprocessing.contracts.1.21.0.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.documentunderstanding.digitizer\\3.2.0\\uipath.documentunderstanding.digitizer.3.2.0.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.excel.activities\\2.18.0-preview\\uipath.excel.activities.2.18.0-preview.nupkg.sha512",
-    "C:\\Users\\star8\\.nuget\\packages\\uipath.gsuite.activities\\2.1.1\\uipath.gsuite.activities.2.1.1.nupkg.sha512",
+    "C:\\Users\\star8\\.nuget\\packages\\uipath.gsuite.activities\\2.1.2\\uipath.gsuite.activities.2.1.2.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.imageprocessing\\22.12.0-preview\\uipath.imageprocessing.22.12.0-preview.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.mail.activities\\1.18.2\\uipath.mail.activities.1.18.2.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.ocr.activities\\3.13.0-preview\\uipath.ocr.activities.3.13.0-preview.nupkg.sha512",

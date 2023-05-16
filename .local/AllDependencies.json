@@ -4625,7 +4625,7 @@
           }
         }
       },
-      "UiPath.GSuite.Activities/2.1.1": {
+      "UiPath.GSuite.Activities/2.1.2": {
         "type": "package",
         "dependencies": {
           "Google.Apis.Calendar.v3": "1.55.0.2554",
@@ -10674,7 +10674,7 @@
           }
         }
       },
-      "UiPath.GSuite.Activities/2.1.1": {
+      "UiPath.GSuite.Activities/2.1.2": {
         "type": "package",
         "dependencies": {
           "Google.Apis.Calendar.v3": "1.55.0.2554",
@@ -21589,10 +21589,10 @@
         "uipath.excel.activities.nuspec"
       ]
     },
-    "UiPath.GSuite.Activities/2.1.1": {
-      "sha512": "K0FL08XxTAH4VP0qKwq/E4OM3DQG4aMXaCjpKbcTAdHhENgBFlhApLh95PfHi1koyq9dWyczk9OyJYomdzHJEQ==",
+    "UiPath.GSuite.Activities/2.1.2": {
+      "sha512": "xlhUvnoUNzg53CS7n3/j+JC/r8DfR9NsZ1kHMsN5v3n8n3Qz9iJm0v0KFFRfM1vZyj1tPmCFKG1wSvbiP7RnPA==",
       "type": "package",
-      "path": "uipath.gsuite.activities/2.1.1",
+      "path": "uipath.gsuite.activities/2.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -21725,7 +21725,7 @@
         "lib/net6.0/zh-TW/UiPath.GSuite.resources.dll",
         "lib/net6.0/zu/UiPath.GSuite.Activities.resources.dll",
         "lib/net6.0/zu/UiPath.GSuite.resources.dll",
-        "uipath.gsuite.activities.2.1.1.nupkg.sha512",
+        "uipath.gsuite.activities.2.1.2.nupkg.sha512",
         "uipath.gsuite.activities.nuspec"
       ]
     },
@@ -23782,7 +23782,7 @@
     "": [],
     "net6.0-windows7.0": [
       "UiPath.Excel.Activities >= 2.18.0-preview <= 2.18.0-preview",
-      "UiPath.GSuite.Activities >= 2.1.1 <= 2.1.1",
+      "UiPath.GSuite.Activities >= 2.1.2 <= 2.1.2",
       "UiPath.Mail.Activities >= 1.18.2 <= 1.18.2",
       "UiPath.PDF.Activities >= 3.14.0 <= 3.14.0",
       "UiPath.Python.Activities >= 1.6.0 <= 1.6.0",
@@ -23814,7 +23814,7 @@
           "UiPath.GSuite.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[2.1.1, 2.1.1]"
+            "version": "[2.1.2, 2.1.2]"
           },
           "UiPath.Mail.Activities": {
             "include": "Runtime",
