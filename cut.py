@@ -8,10 +8,9 @@ def cut(company_code, year_code):
  import re
  from openpyxl import load_workbook
  from pdfrw import PdfReader, PdfWriter
+ import PyPDF2
 
  output_excel = 'outputfiles/' + company_code + '_' + year_code + '_etr.xlsx'
- if not os.path.exists(output_excel):
-   output_excel = 'outputfiles/' + company_code + '_' + year_code + '_etr.xlsm'
  
  filename='inputfiles/'+company_code+'_'+year_code+'.pdf'
 
@@ -45,4 +44,4 @@ def cut(company_code, year_code):
  df.to_excel(output_excel,index=False,sheet_name=company_code)
 
 
-
+cut('2887','110')

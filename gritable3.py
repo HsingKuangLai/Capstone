@@ -69,7 +69,6 @@ def page_col(df):
     import re
     import pandas as pd
     page_columns = []
-    original_column_names=[]
     pattern_all = r'^[^\u4e00-\u9fa5]*$|^頁數$|^頁碼$|^頁次$' 
     pattern_gri = r"\d{3}[\-－]\d{1,2}"
     df = df.fillna('')
@@ -102,3 +101,4 @@ def page_col(df):
 #      gritable(firm,'110')
 #   except:
 #      pass
+# gritable('1201','110')
