@@ -1,0 +1,85 @@
+Sub ChangePage(a,b As Double)
+
+
+Dim lr, i As Integer
+
+Dim pattern As String
+
+lr = Range("A" & Rows.Count).End(xlUp).Row
+
+For i = 1 To lr
+  
+On Error Resume Next
+
+ pattern = "\d{3}-\d{1,2}"
+
+ cells(i, 1).value = ExtractGRIPattern(Cells(i, 1).Value, pattern)
+
+ Cells(i, 2).Value = ExpandAndShift(Cells(i, 2).Value, a,b)
+
+ Next i
+ActiveSheet.Columns(2).NumberFormat = "@"
+End Sub
+
+
+Function ExpandAndShift(str As String, a,b As Double) As String
+    Dim regex As Object
+    Dim matches As Object
+    Dim match As Object
+    Dim startVal As Long
+    Dim endVal As Long
+    Dim tempStr As String
+    Dim outputStr As String
+    
+    Set regex = CreateObject("VBScript.RegExp")
+    regex.pattern = "(\d+)-(\d+)|(\d+)"
+    regex.Global = True
+    Set matches = regex.Execute(str)
+    
+    For Each match In matches
+        If match.SubMatches(0) <> "" Then
+            startVal = CLng(match.SubMatches(0))
+            endVal = CLng(match.SubMatches(1))
+            
+            For i = startVal To endVal
+                tempStr = CStr(ROUND(a*i+b))
+                If outputStr = "" Then
+                    outputStr = tempStr
+                Else
+                    outputStr = outputStr & "," & tempStr
+                End If
+            Next i
+        Else
+            tempStr = CStr(CLng(ROUND(a*match.SubMatches(2)+b)))
+            If outputStr = "" Then
+                outputStr = tempStr
+            Else
+                outputStr = outputStr & "," & tempStr
+            End If
+        End If
+    Next match
+    
+    ExpandAndShift = outputStr
+End Function
+
+Function ExtractGRIPattern(ByVal inputStr As String, ByVal pattern As String) As String
+    Dim regEx As Object
+    Dim match As Object
+    Dim matches As Object
+    Dim outputStr As String
+    
+    Set regEx = CreateObject("VBScript.RegExp")
+    regEx.pattern = pattern
+    regEx.Global = True
+    Set matches = regEx.Execute(inputStr)
+    
+    For Each match In matches
+        If outputStr = "" Then
+            outputStr = match.Value
+        Else
+            outputStr = outputStr & "," & match.Value
+        End If
+    Next match
+    
+    ExtractGRIPattern = outputStr
+End Function

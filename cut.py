@@ -38,8 +38,6 @@ def cut(company_code, year_code):
        writer.write(f)
        writer.compress = True
          
-        #  # Update the pdf_path column in the DataFrame
-        #  df.loc[i, 'pdf_path'] = company_code+'_'+year_code+'_'+str(df.iloc[i, 0]) + '.pdf'
  output_excel = 'outputfiles/' + company_code + '_' + year_code + '_etr.xlsx'
  df.to_excel(output_excel,index=False,sheet_name=company_code)
 
