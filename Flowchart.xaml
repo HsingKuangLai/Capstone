@@ -196,11 +196,7 @@
         <Variable x:TypeArguments="sd:DataTable" Name="dt" />
         <Variable x:TypeArguments="x:Boolean" Name="gripattern" />
         <Variable x:TypeArguments="x:String" Name="company_code" />
-        <Variable x:TypeArguments="x:String" Name="year_code">
-          <Variable.Default>
-            <Literal x:TypeArguments="x:String">110</Literal>
-          </Variable.Default>
-        </Variable>
+        <Variable x:TypeArguments="x:String" Default="109" Name="year_code" />
         <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="pageMatch" />
         <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="pagelist" />
         <Variable x:TypeArguments="x:Int32" Default="0" Name="pagediff" />
@@ -220,7 +216,7 @@
         <Variable x:TypeArguments="x:String" Name="spreadsheetid" />
         <Variable x:TypeArguments="s:String[]" Name="company_lst">
           <Variable.Default>
-            <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;6021&quot;}" />
+            <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;2834&quot;,&quot;2851&quot;}" />
           </Variable.Default>
         </Variable>
         <Variable x:TypeArguments="x:Boolean" Name="isnum" />
@@ -229,6 +225,7 @@
         <Variable x:TypeArguments="x:Double" Name="b" />
         <Variable x:TypeArguments="x:Int32" Name="X1" />
         <Variable x:TypeArguments="x:Int32" Name="X2" />
+        <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="dtfaillist" />
       </Flowchart.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -249,19 +246,19 @@
             <av:Size x:Key="ShapeSize">200,52</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1000,15337.6" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[company_lst]">
+        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[company_lst]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="x:String">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:String" Name="currentItem" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="966.4,15151.2" sap2010:WorkflowViewState.IdRef="Sequence_270">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="966.4,12404.8" sap2010:WorkflowViewState.IdRef="Sequence_270">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="UnitCompany" sap:VirtualizedContainerService.HintSize="923.2,15061.6" sap2010:WorkflowViewState.IdRef="Sequence_269">
+                <Sequence DisplayName="UnitCompany" sap:VirtualizedContainerService.HintSize="923.2,12315.2" sap2010:WorkflowViewState.IdRef="Sequence_269">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -361,14 +358,110 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:HttpClient>
                   </Sequence>
-                  <Sequence DisplayName="page diff" sap:VirtualizedContainerService.HintSize="860.8,3984" sap2010:WorkflowViewState.IdRef="Sequence_244">
+                  <p:PythonScope OperationTimeout="{x:Null}" DisplayName="pdfplumber擷取表格" sap:VirtualizedContainerService.HintSize="860.8,52" sap2010:WorkflowViewState.IdRef="PythonScope_9" LibraryPath="C:\Users\star8\AppData\Local\Programs\Python\Python310\python310.dll" Path="C:\Users\star8\AppData\Local\Programs\Python\Python310" TargetPlatform="x64" WorkingFolder="C:\Users\star8\Desktop\Capstone">
+                    <p:PythonScope.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="PythonEngineSessionProperty" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,292" sap2010:WorkflowViewState.IdRef="Sequence_237">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="p:PythonObject" Name="load" />
+                            <Variable x:TypeArguments="p:PythonObject" Name="invokepy" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="LoadScript_8" Result="[load]" ScriptFile="gritable3.py" />
+                          <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="387.2,80" sap2010:WorkflowViewState.IdRef="InvokeMethod_11" Instance="[load]" Name="gritable" Parameters="[{company_code,year_code}]" Result="[invokepy]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </p:PythonScope.Body>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="649.6,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_11" Range="30" Text="[str_op]">
+                  </p:PythonScope>
+                  <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="860.8,1398.4" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_9">
+                    <ueab:ExcelProcessScopeX.Body>
+                      <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="601.6,1312" sap2010:WorkflowViewState.IdRef="Sequence_397">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="539.2,1200" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_9" ResizeWindow="None" WorkbookPath="[&quot;outputfiles\&quot;+company_code+&quot;_&quot;+year_code+&quot;_etr.xlsx&quot;]">
+                            <ueab:ExcelApplicationCard.Body>
+                              <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="505.6,931.2" sap2010:WorkflowViewState.IdRef="Sequence_398">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ueab:ReadRangeX DisplayName="Read Range" HasHeaders="False" sap:VirtualizedContainerService.HintSize="443.2,169.6" sap2010:WorkflowViewState.IdRef="ReadRangeX_6" Range="[Excel.Sheet(&quot;工作表1&quot;).Range(&quot;A:B&quot;)]" SaveTo="[dt]" />
+                                  <If Condition="[dt.rows.count&lt;10]" sap:VirtualizedContainerService.HintSize="443.2,609.6" sap2010:WorkflowViewState.IdRef="If_46">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <If.Then>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="377.6,427.2" sap2010:WorkflowViewState.IdRef="Sequence_399">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uasc:AppendItemToCollection x:TypeArguments="x:String" Collection="[dtfaillist]" DisplayName="Append items to collection" sap:VirtualizedContainerService.HintSize="334.4,140" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_11">
+                                          <uasc:AppendItemToCollection.Items>
+                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                                              <InArgument x:TypeArguments="x:String">[currentItem]</InArgument>
+                                            </scg:List>
+                                          </uasc:AppendItemToCollection.Items>
+                                        </uasc:AppendItemToCollection>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[string.join(&quot;,&quot;,dtfaillist)]" />
+                                        <ui:Continue sap:VirtualizedContainerService.HintSize="334.4,24.8" sap2010:WorkflowViewState.IdRef="Continue_5" />
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="300,81.6" sap2010:WorkflowViewState.IdRef="Sequence_400">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </Sequence>
+                                    </If.Else>
+                                  </If>
+                                </Sequence>
+                              </ActivityAction>
+                            </ueab:ExcelApplicationCard.Body>
+                          </ueab:ExcelApplicationCard>
+                        </Sequence>
+                      </ActivityAction>
+                    </ueab:ExcelProcessScopeX.Body>
+                  </ueab:ExcelProcessScopeX>
+                  <Sequence DisplayName="page diff" sap:VirtualizedContainerService.HintSize="860.8,81.6" sap2010:WorkflowViewState.IdRef="Sequence_244">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="526.4,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_11" Range="20" Text="[str_op]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -376,15 +469,15 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ReadPDFText>
-                    <Assign sap:VirtualizedContainerService.HintSize="649.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_140">
+                    <Assign sap:VirtualizedContainerService.HintSize="526.4,80.8" sap2010:WorkflowViewState.IdRef="Assign_140">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Boolean">[isnum]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:Boolean">[Isnumeric((right(str_op.replace(" ","").Replace(vbCrlf,""),2)))]</InArgument>
+                        <InArgument x:TypeArguments="x:Boolean">[Isnumeric((right(str_op.replace(" ","").Replace(vbCrlf,""),2))) or Isnumeric(right(str_op.Split(vbCrLf)(0).ToString.trim,2))]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <If Condition="[isnum = True]" sap:VirtualizedContainerService.HintSize="649.6,1359.2" sap2010:WorkflowViewState.IdRef="If_37">
+                    <If Condition="[isnum = True]" sap:VirtualizedContainerService.HintSize="526.4,783.2" sap2010:WorkflowViewState.IdRef="If_37">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -392,77 +485,33 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,201.6" sap2010:WorkflowViewState.IdRef="Sequence_375">
+                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,272.8" sap2010:WorkflowViewState.IdRef="Sequence_375">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign sap2010:Annotation.AnnotationText="Given page, processing space and vbCrLf" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="Assign_141">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:Int32">[pagediff]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:Int32">[30-Cint(right(str_op.replace(" ","").Replace(vbCrlf,""),2))]</InArgument>
-                            </Assign.Value>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Assign>
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <Sequence sap:VirtualizedContainerService.HintSize="572.8,975.2" sap2010:WorkflowViewState.IdRef="Sequence_376">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <TryCatch sap2010:Annotation.AnnotationText="單頁/page前提下&#xA;default應該是右下角&#xA;不行可以試試左上角&#xA;(左右開置換:待補)" DisplayName="頁碼確認" sap:VirtualizedContainerService.HintSize="529.6,885.6" sap2010:WorkflowViewState.IdRef="TryCatch_15">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="433.6,183.2" sap2010:WorkflowViewState.IdRef="TryCatch_18">
                             <TryCatch.Try>
-                              <Sequence sap:VirtualizedContainerService.HintSize="496,324" sap2010:WorkflowViewState.IdRef="Sequence_377">
+                              <Assign sap2010:Annotation.AnnotationText="Given page, processing space and vbCrLf" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="Assign_141">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[pagediff]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[20-Cint(right(str_op.replace(" ","").Replace(vbCrlf,""),2))]</InArgument>
+                                </Assign.Value>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_19" Range="31" Text="[str_op]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:ReadPDFText>
-                                <Assign sap2010:Annotation.AnnotationText="Given page, processing space and vbCrLf" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="Assign_83">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Int32">[pagediff]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Int32">[31-Cint(right(str_op.replace(" ","").Replace(vbCrlf,""),2))]</InArgument>
-                                  </Assign.Value>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Assign>
-                              </Sequence>
+                              </Assign>
                             </TryCatch.Try>
                             <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="496,651.2" sap2010:WorkflowViewState.IdRef="Catch`1_15">
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21.6" sap2010:WorkflowViewState.IdRef="Catch`1_18">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -470,73 +519,47 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="489.6,581.6" sap2010:WorkflowViewState.IdRef="TryCatch_14">
-                                    <TryCatch.Try>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="496,324" sap2010:WorkflowViewState.IdRef="Sequence_241">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_12" Range="31" Text="[str_op]">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:ReadPDFText>
-                                        <Assign sap2010:Annotation.AnnotationText="Given page, processing space and vbCrLf" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="Assign_84">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:Int32">[pagediff]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:Int32">[31-CInt(right(str_op.Split(vbCrLf)(0).ToString.trim,2))]</InArgument>
-                                          </Assign.Value>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </Assign>
-                                      </Sequence>
-                                    </TryCatch.Try>
-                                    <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="456,420" sap2010:WorkflowViewState.IdRef="Catch`1_14">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ActivityAction x:TypeArguments="s:Exception">
-                                          <ActivityAction.Argument>
-                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                          </ActivityAction.Argument>
-                                          <Sequence sap:VirtualizedContainerService.HintSize="449.6,350.4" sap2010:WorkflowViewState.IdRef="Sequence_387">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="387.2,238.4" sap2010:WorkflowViewState.IdRef="InputDialog_14" IsPassword="False" Label="Pagediff (PdfPage-ESGpage)，若為雙頁，請輸入超過10的數字" Title="[&quot;請輸入&quot;+company_code+&quot;頁碼差異&quot;]">
-                                              <ui:InputDialog.Result>
-                                                <OutArgument x:TypeArguments="x:Int32">[pagediff]</OutArgument>
-                                              </ui:InputDialog.Result>
-                                            </ui:InputDialog>
-                                          </Sequence>
-                                        </ActivityAction>
-                                      </Catch>
-                                    </TryCatch.Catches>
-                                  </TryCatch>
+                                  <Assign sap2010:Annotation.AnnotationText="Given page, processing space and vbCrLf" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="Assign_156">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[pagediff]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[20-Cint(right(str_op.Split(vbCrLf)(0).ToString.trim,2))]</InArgument>
+                                    </Assign.Value>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Assign>
                                 </ActivityAction>
                               </Catch>
                             </TryCatch.Catches>
                           </TryCatch>
                         </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="376.8,328" sap2010:WorkflowViewState.IdRef="Sequence_376">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="333.6,238.4" sap2010:WorkflowViewState.IdRef="InputDialog_17" IsPassword="False" Label="Pagediff (PdfPage-ESGpage)" Title="[&quot;請輸入&quot;+company_code+&quot;頁碼差異&quot;]">
+                            <ui:InputDialog.Result>
+                              <OutArgument x:TypeArguments="x:Int32">[pagediff]</OutArgument>
+                            </ui:InputDialog.Result>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InputDialog>
+                        </Sequence>
                       </If.Else>
                     </If>
-                    <If Condition="[pagediff&lt;-10]" sap:VirtualizedContainerService.HintSize="649.6,1810.4" sap2010:WorkflowViewState.IdRef="If_42">
+                    <If Condition="[pagediff&lt;-10]" sap:VirtualizedContainerService.HintSize="526.4,820" sap2010:WorkflowViewState.IdRef="If_42">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -544,20 +567,20 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="616,1628" sap2010:WorkflowViewState.IdRef="Sequence_389">
+                        <Sequence sap:VirtualizedContainerService.HintSize="492.8,637.6" sap2010:WorkflowViewState.IdRef="Sequence_389">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence sap:VirtualizedContainerService.HintSize="572.8,1538.4" sap2010:WorkflowViewState.IdRef="Sequence_388">
+                          <Sequence sap:VirtualizedContainerService.HintSize="449.6,548" sap2010:WorkflowViewState.IdRef="Sequence_388">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="510.4,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_22" Range="30" Text="[str_op]">
+                            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_22" Range="20" Text="[str_op]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -565,20 +588,56 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:ReadPDFText>
-                            <Assign sap2010:Annotation.AnnotationText="x1" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="510.4,112" sap2010:WorkflowViewState.IdRef="Assign_147">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Int32">[X1]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Int32">[CInt(right(str_op.replace(" ","").Replace(vbCrlf,""),2))]</InArgument>
-                              </Assign.Value>
+                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="387.2,52" sap2010:WorkflowViewState.IdRef="TryCatch_16">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                            </Assign>
-                            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="510.4,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_23" Range="31" Text="[str_op]">
+                              <TryCatch.Try>
+                                <Assign sap2010:Annotation.AnnotationText="x1" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="Assign_147">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[X1]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[CInt(right(str_op.replace(" ","").Replace(vbCrlf,""),2))]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                              </TryCatch.Try>
+                              <TryCatch.Catches>
+                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,308" sap2010:WorkflowViewState.IdRef="Catch`1_16">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ActivityAction x:TypeArguments="s:Exception">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                    </ActivityAction.Argument>
+                                    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="333.6,238.4" sap2010:WorkflowViewState.IdRef="InputDialog_18" IsPassword="False" Label="請輸入PDF第20頁的右下角報告書頁碼" Title="雙頁ESG報告特殊處理">
+                                      <ui:InputDialog.Result>
+                                        <OutArgument x:TypeArguments="x:Int32">[X1]</OutArgument>
+                                      </ui:InputDialog.Result>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InputDialog>
+                                  </ActivityAction>
+                                </Catch>
+                              </TryCatch.Catches>
+                            </TryCatch>
+                            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[filepath]" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_23" Range="21" Text="[str_op]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -586,23 +645,59 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:ReadPDFText>
-                            <Assign sap2010:Annotation.AnnotationText="x1" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="510.4,112" sap2010:WorkflowViewState.IdRef="Assign_148">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Int32">[X2]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Int32">[CInt(right(str_op.replace(" ","").Replace(vbCrlf,""),2))]</InArgument>
-                              </Assign.Value>
+                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="387.2,52" sap2010:WorkflowViewState.IdRef="TryCatch_17">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                            </Assign>
-                            <If Condition="[X2-X1=2]" sap:VirtualizedContainerService.HintSize="510.4,922.4" sap2010:WorkflowViewState.IdRef="If_43">
+                              <TryCatch.Try>
+                                <Assign sap2010:Annotation.AnnotationText="x1" DisplayName="讀取頁差" sap:VirtualizedContainerService.HintSize="433.6,112" sap2010:WorkflowViewState.IdRef="Assign_148">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[X2]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[CInt(right(str_op.replace(" ","").Replace(vbCrlf,""),2))]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                              </TryCatch.Try>
+                              <TryCatch.Catches>
+                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21.6" sap2010:WorkflowViewState.IdRef="Catch`1_17">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ActivityAction x:TypeArguments="s:Exception">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                    </ActivityAction.Argument>
+                                    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="333.6,238.4" sap2010:WorkflowViewState.IdRef="InputDialog_19" IsPassword="False" Label="請輸入PDF第21頁的右下角報告書頁碼" Title="雙頁ESG報告特殊處理">
+                                      <ui:InputDialog.Result>
+                                        <OutArgument x:TypeArguments="x:Int32">[X2]</OutArgument>
+                                      </ui:InputDialog.Result>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InputDialog>
+                                  </ActivityAction>
+                                </Catch>
+                              </TryCatch.Catches>
+                            </TryCatch>
+                            <If Condition="[X2-X1=2]" sap:VirtualizedContainerService.HintSize="387.2,52" sap2010:WorkflowViewState.IdRef="If_43">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -626,7 +721,7 @@
                                       <OutArgument x:TypeArguments="x:Double">[b]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
-                                      <InArgument x:TypeArguments="x:Double">[30-0.5*X1]</InArgument>
+                                      <InArgument x:TypeArguments="x:Double">[20-0.5*X1]</InArgument>
                                     </Assign.Value>
                                   </Assign>
                                   <Assign sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_153">
@@ -667,77 +762,10 @@
                         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_390" />
                       </If.Else>
                     </If>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="649.6,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[pagediff]" />
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="649.6,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[a]" />
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="649.6,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[b]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526.4,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[pagediff]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526.4,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[a]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526.4,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[b]" />
                   </Sequence>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="860.8,242.4" sap2010:WorkflowViewState.IdRef="CommentOut_8">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,164" sap2010:WorkflowViewState.IdRef="Sequence_245">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <p:PythonScope OperationTimeout="{x:Null}" DisplayName="切割PDF" sap:VirtualizedContainerService.HintSize="387.2,52" sap2010:WorkflowViewState.IdRef="PythonScope_8" LibraryPath="C:\Users\star8\AppData\Local\Programs\Python\Python310\python310.dll" Path="C:\Users\star8\AppData\Local\Programs\Python\Python310" TargetPlatform="x64" WorkingFolder="C:\Users\star8\Desktop\Capstone">
-                          <p:PythonScope.Body>
-                            <ActivityAction x:TypeArguments="x:Object">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="x:Object" Name="PythonEngineSessionProperty" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,292" sap2010:WorkflowViewState.IdRef="Sequence_236">
-                                <Sequence.Variables>
-                                  <Variable x:TypeArguments="p:PythonObject" Name="load" />
-                                  <Variable x:TypeArguments="p:PythonObject" Name="invokepy" />
-                                </Sequence.Variables>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="LoadScript_7" Result="[load]" ScriptFile="cut.py" />
-                                <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="387.2,80" sap2010:WorkflowViewState.IdRef="InvokeMethod_10" Instance="[load]" Name="cut" Parameters="[{company_code,year_code}]" Result="[invokepy]" />
-                              </Sequence>
-                            </ActivityAction>
-                          </p:PythonScope.Body>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </p:PythonScope>
-                      </Sequence>
-                    </ui:CommentOut.Body>
-                  </ui:CommentOut>
-                  <p:PythonScope OperationTimeout="{x:Null}" DisplayName="pdfplumber擷取表格" sap:VirtualizedContainerService.HintSize="860.8,52" sap2010:WorkflowViewState.IdRef="PythonScope_9" LibraryPath="C:\Users\star8\AppData\Local\Programs\Python\Python310\python310.dll" Path="C:\Users\star8\AppData\Local\Programs\Python\Python310" TargetPlatform="x64" WorkingFolder="C:\Users\star8\Desktop\Capstone">
-                    <p:PythonScope.Body>
-                      <ActivityAction x:TypeArguments="x:Object">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="x:Object" Name="PythonEngineSessionProperty" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,292" sap2010:WorkflowViewState.IdRef="Sequence_237">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="p:PythonObject" Name="load" />
-                            <Variable x:TypeArguments="p:PythonObject" Name="invokepy" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="LoadScript_8" Result="[load]" ScriptFile="gritable3.py" />
-                          <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="387.2,80" sap2010:WorkflowViewState.IdRef="InvokeMethod_11" Instance="[load]" Name="gritable" Parameters="[{company_code,year_code}]" Result="[invokepy]" />
-                        </Sequence>
-                      </ActivityAction>
-                    </p:PythonScope.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </p:PythonScope>
                   <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="資料清理" sap:VirtualizedContainerService.HintSize="860.8,6158.4" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_8">
                     <ueab:ExcelProcessScopeX.Body>
                       <ActivityAction x:TypeArguments="ui:IExcelProcess">
@@ -849,6 +877,12 @@
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ueab:ExcelForEachRowX>
                                     <If Condition="[doublepage=True]" sap:VirtualizedContainerService.HintSize="606.4,891.2" sap2010:WorkflowViewState.IdRef="If_39">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
                                       <If.Then>
                                         <Sequence sap:VirtualizedContainerService.HintSize="476.8,567.2" sap2010:WorkflowViewState.IdRef="Sequence_381">
                                           <sap:WorkflowViewStateService.ViewState>
