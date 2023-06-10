@@ -24,7 +24,7 @@ def gritable(company_code, year_code):
  new_page=[]
  columns_count = []
  total_pages = len(pdf.pages)
- start_page = int(total_pages * 0.8)
+ start_page = int(total_pages * 0.85)
 
 
 #Step3table_settings={"horizontal_strategy": "text"}'[^\x00-\x7F]|(?![Pp])[A-Za-z]'=r'[^\x00-\x7F](、)'r'[^\x00-\x7F、]+|\d+\.\d+'SS
@@ -106,4 +106,4 @@ def page_col(df):
 #      gritable(firm,'109')
 #   except:
 #       pass
-# gritable('2880','109')
+# gritable('1722','110')
